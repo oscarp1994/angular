@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BindingService } from '../binding.service';
 
 @Component({
   selector: 'app-binding',
@@ -8,24 +9,30 @@ import { Component, OnInit } from '@angular/core';
 export class BindingComponent implements OnInit {
 
   //attributs
-  //stocker la liste des commentaires
-  comments = [];
+  //recupération de la liste des commentaires
+  comments = this.bindingService.getAllComments();
   //stocker un commentaire
   comment = {
 date: null,
-message: 'BONJOUR'
+message: ''
 
   };
-  constructor() { }
+  constructor(private bindingService : BindingService) { }
 
   ngOnInit() {
+    
   }
 
   addComment() {
     if (this.comment.message != '')
     {
 
-      //date courante
+      this.bindingService.addComment(
+      {message:this.comment.message}
+      );
+      this.comments = this.bindingService.getAllComments();
+      this.comment.message = '';
+     /* //date courante
       this.comment.date = new Date();
       //ajout du commentaire au tableau json
       this.comments.push({
@@ -33,7 +40,7 @@ message: 'BONJOUR'
         message: this.comment.message
       });
       //vider le champs de saisie des messages
-      this.comment.message = '';
+      this.comment.message = '';*/
     }
   }
 

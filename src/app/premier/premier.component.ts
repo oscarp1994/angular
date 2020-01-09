@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PremierService} from '../premier.service';
 
 
 @Component({
@@ -11,13 +12,16 @@ export class PremierComponent implements OnInit {
 variable1 = 'ma première variable';
 variable2:string = 'ma deuxième variable';
 variable3 = 25;
-//constructeur
-  constructor() { }
+
+variableInjection;
+//constructeur + injection
+  constructor(private monService: PremierService) { }
 
 
   //méthodes
   ngOnInit() {
     this.variable2 = 'ma deuxième variable';
+    this.variableInjection = this.monService.getInfos();
   }
 
 }
