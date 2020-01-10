@@ -7,20 +7,25 @@ import { AppComponent } from './app.component';
 import { PremierComponent } from './premier/premier.component';
 import { BindingComponent } from './binding/binding.component';
 import { SqrtPipe } from './sqrt.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { PixabayComponent } from './pixabay/pixabay.component';
 
 @NgModule({
   //composants appartenant au module (remplie automatiquement lorsque l'on crée un composant avec angular/cli)
   declarations: [
     AppComponent,
     PremierComponent,
-    BindingComponent
- ,
+    BindingComponent,
+ PixabayComponent,
     SqrtPipe ],
+    
   //librairies angular nécessaires à l'éxécution du projet (à rajouter soit-même)
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+
   ],
   //les services qui seront utilisés
   providers: [],
